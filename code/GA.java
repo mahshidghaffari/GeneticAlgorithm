@@ -20,7 +20,7 @@ public class GA{
 		this.popGenerator(); 	// initial population
 	}
 
-
+	//make an array of charecter with all alphabet
 	public void alphabetMaker(){
 		// make an array with all the alphabet
 		for (char c = 'A'; c <= 'Z'; c++) {
@@ -28,6 +28,7 @@ public class GA{
 		}
 	}
 
+	// make an array of population (String of length (target))
 	public void popGenerator(){
 		for (int i = 0; i < popSize; i++) {
 			char[] tempChromosome = new char[TARGET.length()];
@@ -44,11 +45,15 @@ public class GA{
 		}
 	}
 
+	// assign a value to each phenotype according :
+		// if the charecter exist in the target  +1
+		//else if the charecter is same with the same index +100
+		// make an array of fitness value with the same indexing 
 	public void fittness() {
 		for (int i = 0; i < population.length; i++) {
 
-			String phenotype = population[i].genoToPhenotype(); //get the phenotype 
-			String tempTarget = TARGET; //clone of target is made for fitness evaluation
+			String phenotype = population[i].genoToPhenotype(); 
+			String tempTarget = TARGET; 
 			int fitnessValue = 0;
 			for (int j = 0; j < phenotype.length(); j++) {
 
@@ -63,13 +68,14 @@ public class GA{
 				}
 			}
 			System.out.println(fitnessValue);
-			if(fitnessValue >200){
-				System.out.println(population[i].genoToPhenotype());
-			}
-			population[i].setFitness(fitnessValue); //cast double
+			population[i].setFitness(fitnessValue);
 		}
+
+
 	}
-	
+
+
+	// return total fittnes value of population
 	public double totalFittnessPop(){
 		double total = 0;
 		for (int i = 0; i < population.length; i++) {
@@ -78,5 +84,6 @@ public class GA{
 		return total;
 	}
 
+	
 
 }

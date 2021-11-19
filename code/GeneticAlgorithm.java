@@ -81,6 +81,9 @@ public class GeneticAlgorithm {
 		return fitnessSum;
 	}
 
+
+	// in faghat miad ye array az individuala minivise hamon populatione faghat be
+	// in tavaot ke har loghat be andaze emtiazesh to on array sakhte mishe
 	public ArrayList<Individual> createrouletteWheelList(){
 		ArrayList<Individual> rouletteWheelList = new ArrayList<>();
 		for (int i = 0; i < population.length; i++) {

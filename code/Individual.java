@@ -4,6 +4,7 @@ public class Individual {
 	char[] chromosome;
 	double fitness;
 	
+	//word
 	public Individual(char[] chromosome) {
 		this.chromosome = chromosome;
 		this.fitness = 0;
