@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GA{
@@ -49,7 +50,7 @@ public class GA{
 		// if the charecter exist in the target  +1
 		//else if the charecter is same with the same index +100
 		// make an array of fitness value with the same indexing 
-	public void fittness() {
+	public void setFittness() {
 		for (int i = 0; i < population.length; i++) {
 
 			String phenotype = population[i].genoToPhenotype(); 
@@ -84,6 +85,41 @@ public class GA{
 		return total;
 	}
 
-	
+	// pick two phenotype randomly base on their distributions
+
+	public ArrayList<Individual> naturalSelection(){
+		ArrayList<Integer> probDistributionPop = new ArrayList<Integer>();
+		Individual firstSelected; 
+		Individual secondSelected; 
+		Random rndOne = new Random();
+		Random rndTwo = new Random();
+		ArrayList<Individual> selectedParents= new ArrayList<Individual>();
+
+		// make and array of phenotype based in their distribution
+		for (int i = 0 ; i< this.population.length;i++){
+			for(int j = 0; j<population[i].getFitness();j++){
+				probDistributionPop.add(i);
+			}
+		}
+
+
+		// select two Individual randomly from probDistributionPop
+		int rndOneInt = rndOne.nextInt(probDistributionPop.size()); 
+		int rndTwoInt = rndTwo.nextInt(probDistributionPop.size()); 
+
+		int indexFistSelected = probDistributionPop.get(rndOneInt);
+		int indexSecondSelected = probDistributionPop.get(rndTwoInt);
+		
+		firstSelected = population[indexFistSelected];
+		secondSelected = population[indexSecondSelected];
+		selectedParents.add(firstSelected);
+		selectedParents.add(secondSelected);
+		
+		System.out.println(selectedParents.get(0).genoToPhenotype());
+		System.out.println(selectedParents.get(1).genoToPhenotype());
+
+		return selectedParents;
+		
+	}
 
 }
